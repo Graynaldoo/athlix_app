@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "469935433924",
+    "project_id": "athlix-7dc0d",
+    "storage_bucket": "athlix-7dc0d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469935433924:android:7e839576fb183ec4340191",
+        "android_client_info": {
+          "package_name": "com.kelompok7.athlix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5canKrnJrMpu5gRkpvKX56PIjgWYwRmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
