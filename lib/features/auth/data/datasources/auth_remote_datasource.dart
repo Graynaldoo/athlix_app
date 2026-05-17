@@ -11,11 +11,35 @@ class AuthRemoteDatasource {
       email: email,
       password: password,
     );
+
+    final firebaseUser = cred.user;
+    if (firebaseUser == null) {
+      throw Exception('Login gagal: user tidak ditemukan');
+    }
+
     final doc = await _firestore
         .collection('users')
-        .doc(cred.user!.uid)
+        .doc(firebaseUser.uid)
         .get();
-    return UserModel.fromFirestore(doc.data()!, cred.user!.uid);
+
+    // If user document doesn't exist in Firestore, create it automatically
+    if (!doc.exists || doc.data() == null) {
+      final newUser = UserModel(
+        uid: firebaseUser.uid,
+        email: firebaseUser.email ?? email,
+        name: firebaseUser.displayName ?? email.split('@').first,
+        photoUrl: firebaseUser.photoURL,
+        reliabilityScore: 100.0,
+        createdAt: DateTime.now(),
+      );
+      await _firestore
+          .collection('users')
+          .doc(firebaseUser.uid)
+          .set(newUser.toFirestore());
+      return newUser;
+    }
+
+    return UserModel.fromFirestore(doc.data()!, firebaseUser.uid);
   }
 
   Future<UserModel> register(String email, String password, String name) async {
@@ -23,8 +47,14 @@ class AuthRemoteDatasource {
       email: email,
       password: password,
     );
+
+    final firebaseUser = cred.user;
+    if (firebaseUser == null) {
+      throw Exception('Registrasi gagal: user tidak dibuat');
+    }
+
     final user = UserModel(
-      uid: cred.user!.uid,
+      uid: firebaseUser.uid,
       email: email,
       name: name,
       reliabilityScore: 100.0,
@@ -32,7 +62,7 @@ class AuthRemoteDatasource {
     );
     await _firestore
         .collection('users')
-        .doc(cred.user!.uid)
+        .doc(firebaseUser.uid)
         .set(user.toFirestore());
     return user;
   }
@@ -45,7 +75,7 @@ class AuthRemoteDatasource {
     return _auth.authStateChanges().asyncMap((user) async {
       if (user == null) return null;
       final doc = await _firestore.collection('users').doc(user.uid).get();
-      if (!doc.exists) return null;
+      if (!doc.exists || doc.data() == null) return null;
       return UserModel.fromFirestore(doc.data()!, user.uid);
     });
   }
