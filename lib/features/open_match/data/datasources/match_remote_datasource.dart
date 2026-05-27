@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../models/match_model.dart';
-import '../../domain/entities/match_entity.dart';
 
 class MatchRemoteDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

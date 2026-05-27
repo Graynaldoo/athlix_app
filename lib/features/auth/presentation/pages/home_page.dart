@@ -78,9 +78,9 @@ class HomePage extends ConsumerWidget {
             Container(
               width: 52, height: 52,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.white.withOpacity(0.3), width: 2),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.3), width: 2),
               ),
               child: Center(child: Text(userName.isNotEmpty ? userName[0].toUpperCase() : 'A', style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700))),
             ),
@@ -88,7 +88,7 @@ class HomePage extends ConsumerWidget {
             Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Halo, $userName! 👋', style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700)),
               const SizedBox(height: 4),
-              Text('Siap berlatih hari ini?', style: TextStyle(color: Colors.white.withOpacity(0.85), fontSize: 14)),
+              Text('Siap berlatih hari ini?', style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 14)),
             ])),
           ]),
         ],
@@ -103,7 +103,7 @@ class HomePage extends ConsumerWidget {
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(20),
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 20, offset: const Offset(0, 8))],
+          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 20, offset: const Offset(0, 8))],
         ),
         child: Row(children: [
           _statCard(Icons.fitness_center_rounded, '0', 'Latihan\nMinggu Ini', AppColors.sportRunning),
@@ -118,7 +118,7 @@ class HomePage extends ConsumerWidget {
     return Expanded(child: Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       child: Column(children: [
-        Container(width: 44, height: 44, decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(14)), child: Icon(icon, color: color, size: 22)),
+        Container(width: 44, height: 44, decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(14)), child: Icon(icon, color: color, size: 22)),
         const SizedBox(height: 10),
         Text(value, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
         const SizedBox(height: 4),
@@ -146,7 +146,7 @@ class HomePage extends ConsumerWidget {
               Container(
                 width: 56, height: 56,
                 decoration: BoxDecoration(gradient: LinearGradient(colors: item[2] as List<Color>), borderRadius: BorderRadius.circular(18),
-                  boxShadow: [BoxShadow(color: (item[2] as List<Color>)[0].withOpacity(0.3), blurRadius: 8, offset: const Offset(0, 4))]),
+                  boxShadow: [BoxShadow(color: (item[2] as List<Color>)[0].withValues(alpha: 0.3), blurRadius: 8, offset: const Offset(0, 4))]),
                 child: Icon(item[0] as IconData, color: Colors.white, size: 26),
               ),
               const SizedBox(height: 8),
@@ -174,7 +174,7 @@ class HomePage extends ConsumerWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16), border: Border.all(color: Colors.grey.shade100)),
       child: Row(children: [
-        Container(width: 48, height: 48, decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(14)), child: Icon(icon, color: color, size: 22)),
+        Container(width: 48, height: 48, decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(14)), child: Icon(icon, color: color, size: 22)),
         const SizedBox(width: 14),
         Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(title, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),

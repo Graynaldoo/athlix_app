@@ -61,18 +61,18 @@ class ProfilePage extends ConsumerWidget {
         Container(
           width: 80, height: 80,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: Colors.white.withOpacity(0.4), width: 3),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.4), width: 3),
           ),
           child: Center(child: Text(name.isNotEmpty ? name[0].toUpperCase() : '?', style: const TextStyle(color: Colors.white, fontSize: 34, fontWeight: FontWeight.w700))),
         ),
         const SizedBox(height: 14),
         Text(name, style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700)),
         const SizedBox(height: 4),
-        Text(email, style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 14)),
+        Text(email, style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 14)),
         const SizedBox(height: 6),
-        Text('Anggota sejak ${DateFormat('MMMM yyyy', 'id').format(createdAt)}', style: TextStyle(color: Colors.white.withOpacity(0.6), fontSize: 12)),
+        Text('Anggota sejak ${DateFormat('MMMM yyyy', 'id').format(createdAt)}', style: TextStyle(color: Colors.white.withValues(alpha: 0.6), fontSize: 12)),
       ]),
     );
   }
